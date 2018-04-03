@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
-        mDrawerLayout           = findViewById(R.id.drawer_layout);
-        NavigationView nav_view = findViewById(R.id.nav_view);
+        mDrawerLayout            = findViewById(R.id.drawer_layout);
+        NavigationView nav_view  = findViewById(R.id.nav_view);
 
 
         mDrawerLayout.addDrawerListener(
@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void selectDrawerItem(MenuItem menuItem) {
+
         // Create a new fragment and specify the fragment to show based on nav item clicked
         Fragment fragment = null;
         Class fragmentClass;

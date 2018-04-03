@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,15 +48,16 @@ public class ConverterFragment extends Fragment {
                 String eText1 = text1.getText().toString();
                 String eText2 = text2.getText().toString();
 
-                if (eText1.equals("") && !(eText2.equals(""))) {
+                if (TextUtils.isEmpty(eText1) && !(TextUtils.isEmpty(eText2))) {
                     bytes = eText2.getBytes();
                     emptyOne = "1";
                 }
-                if (eText2.equals("") && !(eText1.equals(""))) {
+                eText1.isEmpty();
+                if (TextUtils.isEmpty(eText2) && !(TextUtils.isEmpty(eText1))) {
                     bytes = eText1.getBytes();
                     emptyOne = "2";
                 }
-                if (eText1.equals("") && eText2.equals("")) {
+                if (TextUtils.isEmpty(eText1) && TextUtils.isEmpty(eText2)) {
 
                     showAlert(getActivity(), "WARNING", "Please enter something to convert");
 
