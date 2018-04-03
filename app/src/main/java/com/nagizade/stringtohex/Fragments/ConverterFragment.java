@@ -1,8 +1,13 @@
 package com.nagizade.stringtohex.Fragments;
 
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +37,9 @@ public class ConverterFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_converter, container, false);
-        Button convertButton = (Button) view.findViewById(R.id.convertButton);
+        Button convertButton = view.findViewById(R.id.convertButton);
+        Button clearButton  = view.findViewById(R.id.clearButton);
+
         text2 = view.findViewById(R.id.editText2);
         text1 = view.findViewById(R.id.editText);
         convertButton.setOnClickListener(new View.OnClickListener() {
@@ -42,38 +49,68 @@ public class ConverterFragment extends Fragment {
                 String eText2 = text2.getText().toString();
 
                 if (eText1.equals("") && !(eText2.equals(""))) {
-                     bytes = eText2.getBytes();
-                     emptyOne = "1";
+                    bytes = eText2.getBytes();
+                    emptyOne = "1";
                 }
                 if (eText2.equals("") && !(eText1.equals(""))) {
-                     bytes = eText1.getBytes();
-                     emptyOne = "2";
+                    bytes = eText1.getBytes();
+                    emptyOne = "2";
                 }
                 if (eText1.equals("") && eText2.equals("")) {
 
-                }
+                    showAlert(getActivity(), "WARNING", "Please enter something to convert");
 
-                StringBuilder binary = new StringBuilder();
-                for (byte b : bytes) {
-                    int val = b;
-                    for (int i = 0; i < 8; i++) {
-                        binary.append((val & 128) == 0 ? 0 : 1);
-                        val <<= 1;
+                }
+                if (bytes != null) {
+                    StringBuilder binary = new StringBuilder();
+                    for (byte b : bytes) {
+                        int val = b;
+                        for (int i = 0; i < 8; i++) {
+                            binary.append((val & 128) == 0 ? 0 : 1);
+                            val <<= 1;
+                        }
+                        binary.append(' ');
                     }
-                    binary.append(' ');
-                }
 
-                switch (emptyOne) {
-                    case "1":
-                        text1.setText(binary);
-                        break;
-                    case "2":
-                        text2.setText(binary);
-                        break;
-                }
+                    switch (emptyOne) {
+                        case "1":
+                            text1.setText(binary);
+                            break;
+                        case "2":
+                            text2.setText(binary);
+                            break;
+                    }
 
+                }
+            }
+        });
+
+        //If user clicked Clear button we will clear all EditText's
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                text1.setText("");
+                text2.setText("");
             }
         });
         return view;
+    }
+
+    public void showAlert(Context context,String title,String message){
+        AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder(context, android.R.style.Theme_Material_Dialog_Alert);
+        } else {
+            builder = new AlertDialog.Builder(context);
+        }
+        builder.setTitle(title)
+                .setMessage(message)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // continue with delete
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 }
