@@ -1,4 +1,4 @@
-package com.nagizade.stringtohex;
+package com.nagizade.stringtobinary;
 
 import org.junit.Test;
 

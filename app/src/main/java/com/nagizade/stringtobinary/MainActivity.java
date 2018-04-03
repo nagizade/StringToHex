@@ -1,4 +1,4 @@
-package com.nagizade.stringtohex;
+package com.nagizade.stringtobinary;
 
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -11,10 +11,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
 
-import com.nagizade.stringtohex.Fragments.AboutFragment;
-import com.nagizade.stringtohex.Fragments.ConverterFragment;
+import com.nagizade.stringtobinary.Fragments.AboutFragment;
+import com.nagizade.stringtobinary.Fragments.ConverterFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,8 +31,9 @@ public class MainActivity extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
-        mDrawerLayout = findViewById(R.id.drawer_layout);
-        NavigationView nav_view = (NavigationView) findViewById(R.id.nav_view);
+        mDrawerLayout           = findViewById(R.id.drawer_layout);
+        NavigationView nav_view = findViewById(R.id.nav_view);
+
 
         mDrawerLayout.addDrawerListener(
                 new DrawerLayout.DrawerListener() {
@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
         );
 
         setupDrawerContent(nav_view);
+        selectDrawerItem(nav_view.getMenu().findItem(R.id.nav_main));
+        nav_view.getMenu().findItem(R.id.nav_main).setChecked(true);
     }
 
     @Override

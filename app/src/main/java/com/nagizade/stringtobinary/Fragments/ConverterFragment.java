@@ -1,7 +1,6 @@
-package com.nagizade.stringtohex.Fragments;
+package com.nagizade.stringtobinary.Fragments;
 
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
@@ -14,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.nagizade.stringtohex.R;
+import com.nagizade.stringtobinary.R;
 
 
 /**

@@ -1,15 +1,13 @@
-package com.nagizade.stringtohex.Fragments;
+package com.nagizade.stringtobinary.Fragments;
 
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.nagizade.stringtohex.R;
+import com.nagizade.stringtobinary.R;
 
 /**
  * A simple {@link Fragment} subclass.
