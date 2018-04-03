@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">StringToHex</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="about_fragment">About App</string>
+    <string name="converter_fragment">Hex to String converter</string>
 </resources>
